@@ -20,7 +20,7 @@ var config = {
     unit: 'celsius',
 
     /**
-     * Coordinates for getting outside weather data from forecast.io
+     * Coordinates for getting outside weather data from darksky.net
      * By default, location is determined by HTML5 geolocation,
      * but as a fallback it relies on manual coordinates.
      *
@@ -47,8 +47,8 @@ var config = {
     },
 
     /**
-     * Forecast.io API key.
-     * Please don't abuse this. Be a good guy and request your own at http://developer.forecast.io
+     * Dark Sky API key.
+     * Please don't abuse this. Be a good guy and request your own at http://darksky.net/dev
      */
     APIKey: '262d0436a1b2d47e7593f0bb41491b64',
     /* Forecast.io language for data retrieval */
@@ -507,11 +507,11 @@ function getLocation() {
 
 function loadOutsideWeather() {
     if(!config.APIKey) {
-        displayError('No Forecast.io API key, unable to get outside weather data.', '#error-container');
+        displayError('No Dark Sky API key, unable to get outside weather data.', '#error-container');
         return;
     }
 
-    $.getJSON('https://api.forecast.io/forecast/' +
+    $.getJSON('https://api.darksky.net/forecast/' +
         config.APIKey + '/' +
         config.latitude + ',' +
         config.longitude +
@@ -529,7 +529,7 @@ function loadOutsideWeather() {
             }
             
             $('#forecast-summary').text(json.hourly.summary);
-            $('#forecast-link').attr('href', 'http://forecast.io/#/f/' +
+            $('#forecast-link').attr('href', 'http://darksky.net/#/f/' +
                 config.latitude + ',' + config.longitude);
         });
 }
