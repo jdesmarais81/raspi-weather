@@ -442,6 +442,7 @@ function loadLastData() {
         $('#curr-temp-inside').text(format(json.temperature) + '°');
         $('#curr-hum-inside').text(json.humidity + '%');
 	$('#curr-press-inside').text(json.pressure + ' hPa');
+	$('#curr-time-inside').text(json.timestamp.substring(11, 16));
     });
 }
 
